@@ -8,15 +8,15 @@ public class Spaceship {
    PApplet screen;
 
    public Spaceship(int x, int y, PApplet screen) {
-      this.x = x;
-      this.y = y;
+      this.x = 370;
+      this.y = 700;
       this.screen = screen;
    }
 
    public void display() {
       // this.display();
  
-      screen.fill(70);
+      screen.fill(220);
 
       screen.triangle(
             x, y - 30,

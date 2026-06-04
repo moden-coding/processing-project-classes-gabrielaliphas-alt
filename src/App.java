@@ -5,6 +5,7 @@ import processing.core.*;
 public class App extends PApplet {
 
     ArrayList<Asteroid> asteroids;
+    ArrayList<Bullet> bullets;
 
     public static void main(String[] args) {
         PApplet.main("App");
@@ -19,6 +20,12 @@ public class App extends PApplet {
     public void setup() {
         asteroids = new ArrayList<>();
         ship = new Spaceship(width / 2, height - 100, this);
+        for (int i = 0; i < 100; i++) {
+
+            // i.display()
+            // asteroids.add(a);
+
+        }
     }
 
     public void settings() {
@@ -30,12 +37,21 @@ public class App extends PApplet {
         background(20);
         ship.display();
         fill(100);
-
-        for (int i = 0; i < 5; i++) {
-            Asteroid a = new Asteroid;
-                    
+        if (frameCount % 30 == 0) {
+            System.out.println(frameCount);
+            System.out.println("make an asteroid");
+            Asteroid a = new Asteroid(this);
             asteroids.add(a);
         }
+
+        for (Asteroid a : asteroids) {
+            a.display();
+            a.move();
+        }
+        fill(255);
+        textSize(30);
+        text("Lives: " + lives, 20, 50);
+        text("Score: " + score, 20, 100);
 
     }
 

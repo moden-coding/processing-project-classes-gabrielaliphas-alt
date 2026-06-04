@@ -8,12 +8,13 @@ public class Asteroid {
 
     PApplet screen;
 
-    public Asteroid(int x, int y, PApplet screen) {
-        this.x = x;
-        this.y = y;
+    public Asteroid(PApplet screen) {
+       
+        this.y = 0;
         speed = 5;
 
         this.screen = screen;
+         this.x = (int)screen.random(screen.width);
     }
 
     public void display() {
@@ -23,6 +24,9 @@ public class Asteroid {
         screen.circle(x, y, 40);
 
     }
+public void move(){
 
+    y +=5;
+}
 
 }
