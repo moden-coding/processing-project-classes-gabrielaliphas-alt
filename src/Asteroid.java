@@ -9,12 +9,12 @@ public class Asteroid {
     PApplet screen;
 
     public Asteroid(PApplet screen) {
-       
+
         this.y = 0;
-        speed = 5;
+        speed = 7;
 
         this.screen = screen;
-         this.x = (int)screen.random(screen.width);
+        this.x = (int) screen.random(screen.width);
     }
 
     public void display() {
@@ -24,9 +24,22 @@ public class Asteroid {
         screen.circle(x, y, 40);
 
     }
-public void move(){
 
-    y +=5;
-}
+    public void move() {
 
+        y += 8;
+    }
+
+   
+    public boolean collide(float otherX, float otherY) {
+
+        double distanceBetweenObjects =
+                screen.dist(x, y, otherX, otherY);
+
+        if (distanceBetweenObjects <= 25) {
+            return true;
+        }
+
+        return false;
+    }
 }

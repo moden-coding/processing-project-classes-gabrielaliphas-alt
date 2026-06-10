@@ -25,11 +25,11 @@ public class Spaceship {
    }
 
    public void moveLeft() {
-      x -= 20;
+      x -= 8;
    }
 
    public void moveRight() {
-      x += 20;
+      x += 8;
    }
 
 }
