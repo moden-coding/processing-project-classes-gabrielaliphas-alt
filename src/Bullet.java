@@ -10,11 +10,11 @@ public class Bullet {
 
     public Bullet(int x, int y, PApplet screen) {
         this.x = x;
-        this.y = 700;
+        this.y = 700;           //x and y pos
         this.screen = screen;
     }
 
-    public void display() {
+    public void display() {//show the bullet
 
         screen.fill(255, 255, 0);
 
@@ -23,16 +23,16 @@ public class Bullet {
     }
 
     public void update() {
-        y -= 20;
+        y -= 30;
        
     }
 
     public void move() {
 
-        y -= 20;
+        y -= 30;
     }
 
-    public int getX(){
+    public int getX(){//return position
         return x;
 
     }

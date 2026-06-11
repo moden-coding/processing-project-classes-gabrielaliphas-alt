@@ -13,30 +13,28 @@ public class Spaceship {
       this.screen = screen;
    }
 
-   public void display() {
-      // this.display();
- 
-      screen.fill(220);
+   public void display() {    //used chat to make it more fancy
+    screen.noFill();
+screen.stroke(100, 150, 255);
+screen.strokeWeight(4);
 
-      screen.triangle(
-            x, y - 30,
-            x - 20, y + 20,
-            x + 20, y + 20);
-   }
+screen.triangle(
+    x, y - 25,
+    x - 18, y + 25,
+    x + 18, y + 25
+);
+screen.fill(0, 200, 255);//chat here too
+screen.noStroke();
+screen.circle(x, y, 6);
+}
 
    public void moveLeft() {
       x -= 8;
    }
 
-   public void moveRight() {
+   public void moveRight() { // speed
       x += 8;
    }
 
 }
 
-// if (moveLeft) {
-// SpaceshipX -= 10;
-// speed of paddles moving
-
-// if (moveRight) {
-// SpaceshipY += 10;

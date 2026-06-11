@@ -18,7 +18,7 @@ public class Asteroid {
     }
 
     public void display() {
-
+                                            //astroid shows on screen
         screen.fill(200);
 
         screen.circle(x, y, 40);
@@ -27,13 +27,13 @@ public class Asteroid {
 
     public void move() {
 
-        y += 8;
+        y += 8;         //speed
     }
 
    
     public boolean collide(float otherX, float otherY) {
 
-        double distanceBetweenObjects =
+        double distanceBetweenObjects =                         //collision
                 screen.dist(x, y, otherX, otherY);
 
         if (distanceBetweenObjects <= 25) {
