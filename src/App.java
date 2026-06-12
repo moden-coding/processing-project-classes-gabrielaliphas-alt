@@ -7,16 +7,16 @@ import java.io.PrintWriter;
 public class App extends PApplet {
 
     ArrayList<Asteroid> asteroids;
-    ArrayList<Bullet> bullets;              //array lists for bullets and astroids
+    ArrayList<Bullet> bullets; // array lists for bullets and astroids
 
     public static void main(String[] args) {
         PApplet.main("App");
     }
 
     Spaceship ship;
-    int lives;  //variables
+    int lives; // variables
     int score;
-    int scene;      
+    int scene;
     int highScore;
 
     // int gameStart;
@@ -39,7 +39,7 @@ public class App extends PApplet {
     }
 
     public void settings() {
-        size(800, 800);     //backround size
+        size(800, 800); // backround size
 
     }
 
@@ -52,14 +52,16 @@ public class App extends PApplet {
             textSize(30);
             text("Arrow Keys to Move", 240, 400);
             text("Press SPACE to Start", 240, 500);
+            text("Destroy asteroids to score points", 170, 550);
+            text("Avoid getting hit 3 times", 190, 600);
 
         } else if (scene == 1) {
 
             background(20);
-            ship.display();     // if scene one then main game
+            ship.display(); // if scene one then main game
             fill(100);
 
-            if (frameCount % 30 == 0) {     //SPAWN ASTROIDS
+            if (frameCount % 30 == 0) { // SPAWN ASTROIDS
                 System.out.println(frameCount);
                 System.out.println("make an asteroid");
                 Asteroid a = new Asteroid(this);
@@ -70,8 +72,9 @@ public class App extends PApplet {
             for (Asteroid a : asteroids) {
                 a.display();
                 a.move();
+                a.speed = 5 + score / 5;        //my dad showed me how to do this
             }
-                // SPAWN BULLETS
+            // SPAWN BULLETS
             if (frameCount % 30 == 0) {
                 System.out.println(frameCount);
                 System.out.println("make an asteroid");
@@ -83,7 +86,7 @@ public class App extends PApplet {
                 i.move();
 
             }
-                //collisions
+            // collisions
             for (int i = 0; i < asteroids.size(); i++) {
                 Asteroid a = asteroids.get(i);
                 if (a.collide(ship.x, ship.y)) {
@@ -108,7 +111,7 @@ public class App extends PApplet {
             if (leftPressed) {
                 ship.moveLeft();
             }
-                                            // movement
+            // movement
             if (rightPressed) {
                 ship.moveRight();
             }
@@ -117,7 +120,7 @@ public class App extends PApplet {
             textSize(30);
             text("Lives: " + lives, 20, 50);
             text("Score: " + score, 20, 100);
-            if (lives <= 0) {                   // game over check
+            if (lives <= 0) { // game over check
                 if (score > highScore) {
                     highScore = score;
                     saveHighScore();
@@ -125,7 +128,7 @@ public class App extends PApplet {
 
                 scene = 2;
             }
-        } else {            // end scene
+        } else { // end scene
 
             textSize(60);
             text("game over!", 250, 400);
@@ -145,13 +148,13 @@ public class App extends PApplet {
         }
 
         if (keyCode == LEFT) {
-            leftPressed = true;         //smooth movement
+            leftPressed = true; // smooth movement
         }
 
         if (keyCode == RIGHT) {
             rightPressed = true;
         }
-        if (key == 'r' && scene == 2) {     //restart and set to 0
+        if (key == 'r' && scene == 2) { // restart and set to 0
             scene = 1;
             score = 0;
             lives = 3;
@@ -162,7 +165,7 @@ public class App extends PApplet {
     public void keyReleased() {
 
         if (keyCode == LEFT) {
-            leftPressed = false;        //smooth movement
+            leftPressed = false; // smooth movement
         }
 
         if (keyCode == RIGHT) {
@@ -170,7 +173,7 @@ public class App extends PApplet {
         }
     }
 
-    public void saveHighScore() {       // save high score
+    public void saveHighScore() { // save high score
 
         try (PrintWriter writer = new PrintWriter("highscore.txt")) {
 

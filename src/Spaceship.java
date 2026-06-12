@@ -30,6 +30,8 @@ screen.circle(x, y, 6);
 
    public void moveLeft() {
       x -= 8;
+
+      
    }
 
    public void moveRight() { // speed
